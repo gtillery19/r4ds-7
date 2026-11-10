@@ -12,10 +12,12 @@ library(arrow)
 ```
 
 ```{r}
+#| include: false
 print(schema(open_dataset("data/daily_prices.parquet")))
 ```
 
 ```{r}
+#| include: false
 open_dataset("data/daily_prices.parquet") |>
   filter(date_raw >= "2025-01-01") |>
   group_by(coin_id) |>
@@ -40,6 +42,7 @@ crypto <- prices |>
 ```
 
 ```{r}
+#| include: false
 metadata |>
   mutate(launch_date_parsed = as.Date(lubridate::parse_date_time(
     launch_date,
@@ -48,14 +51,6 @@ metadata |>
   ))) |>
   select(coin_id, coin_name, launch_date, launch_date_parsed) |>
   arrange(launch_date_parsed)
-```
-
-```{r}
-prices |>
-  filter(coin_id == "btc") |>
-  mutate(date = as.Date(date_raw)) |>
-  ggplot(aes(x = date, y = price_usd)) +
-  geom_line()
 ```
 
 ```{r}
