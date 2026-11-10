@@ -1,0 +1,12 @@
+---
+title: "Crypto Markets"
+author: "Greta Tillery"
+execute:
+  echo: false
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(arrow)
+```
